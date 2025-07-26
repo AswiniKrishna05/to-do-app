@@ -98,9 +98,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             : TextDecoration.none,
                       ),
                     ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.redAccent),
-                      onPressed: () => taskVM.deleteTask(task.id!),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit, color: Colors.blueAccent),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => AddEditTaskScreen(task: task),
+                              ),
+                            );
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.redAccent),
+                          onPressed: () => taskVM.deleteTask(task.id!),
+                        ),
+                      ],
                     ),
                     onTap: () => Navigator.push(
                       context,
